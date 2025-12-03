@@ -6,6 +6,20 @@ import { Menu, Search, SearchIcon } from "lucide-react";
 import { useMediaQuery } from "@/hooks/useMediaQuery";
 import { InputGroup, InputGroupAddon, InputGroupInput } from "./ui/input-group";
 import { ModeToggle } from "./ModeToggle";
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuGroup,
+  DropdownMenuItem,
+  DropdownMenuLabel,
+  DropdownMenuPortal,
+  DropdownMenuSeparator,
+  DropdownMenuShortcut,
+  DropdownMenuSub,
+  DropdownMenuSubContent,
+  DropdownMenuSubTrigger,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu";
 
 export default function Header() {
   const isMdUp = useMediaQuery("(min-width: 768px)");
@@ -33,11 +47,26 @@ export default function Header() {
             <Button>
               <Search />
             </Button>
+          </>
+        )}
+        <DropdownMenu>
+          <DropdownMenuTrigger asChild>
             <Button>
               <Menu />
             </Button>
-          </>
-        )}
+          </DropdownMenuTrigger>
+          <DropdownMenuContent className="w-56" align="end">
+            <DropdownMenuLabel>Geradores</DropdownMenuLabel>
+            <DropdownMenuGroup>
+              <DropdownMenuItem>Gerador 1</DropdownMenuItem>
+            </DropdownMenuGroup>
+            <DropdownMenuSeparator />
+            <DropdownMenuGroup>
+              <DropdownMenuLabel>Validadores</DropdownMenuLabel>
+              <DropdownMenuItem>Validador 1</DropdownMenuItem>
+            </DropdownMenuGroup>
+          </DropdownMenuContent>
+        </DropdownMenu>
       </div>
     </header>
   );
