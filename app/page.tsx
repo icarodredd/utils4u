@@ -8,6 +8,13 @@ import {
   ItemTitle,
 } from "@/components/ui/item";
 
+const popularTools = [
+  { name: "Gerador de CPF", href: "/gerador-de-cpf" },
+  { name: "Gerador de CPNJ", href: "/gerador-de-cnpj" },
+  { name: "Validador de CPF", href: "/validador-de-cpf" },
+  { name: "Validador de CPNJ", href: "/validador-de-cnpj" },
+];
+
 export default function Home() {
   return (
     <main className="mt-4">
@@ -15,20 +22,20 @@ export default function Home() {
         Ferramentas Populares
       </h2>
       <div className="flex flex-col gap-4 items-center">
-        {[1, 2, 3].map((item) => (
+        {popularTools.map(({ name, href }) => (
           <Item
             className="w-5/6"
-            key={item}
+            key={name}
             variant="outline"
             size="sm"
             asChild
           >
-            <a href="#">
+            <a href={href}>
               <ItemMedia>
-                <BadgeCheckIcon className="size-5" />
+                <BadgeCheckIcon className="size-5 text-primary" />
               </ItemMedia>
               <ItemContent>
-                <ItemTitle>Gerador {item}</ItemTitle>
+                <ItemTitle>{name}</ItemTitle>
               </ItemContent>
               <ItemActions>
                 <ChevronRightIcon className="size-4" />
