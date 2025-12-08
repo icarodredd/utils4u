@@ -6,7 +6,7 @@ import { Button } from "@/components/ui/button";
 import { Label } from "@/components/ui/label";
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import { useState } from "react";
-import { formatCPF } from "@brazilian-utils/brazilian-utils";
+import { formatCPF, formatCNPJ } from "@brazilian-utils/brazilian-utils";
 
 export default function GenerateData() {
   const params = useParams<{ name: string }>();
@@ -19,13 +19,12 @@ export default function GenerateData() {
 
     if (pontuaction === "with" && params?.name === "cpf") {
       const formattedCPF = formatCPF(data[params?.name as string]);
-      console.log(formattedCPF);
       setGeneratedData(formattedCPF);
       return;
     }
 
     if (pontuaction === "with" && params?.name === "cnpj") {
-      const formattedCNPJ = data[params?.name as string];
+      const formattedCNPJ = formatCNPJ(data[params?.name as string]);
       setGeneratedData(formattedCNPJ);
       return;
     }
