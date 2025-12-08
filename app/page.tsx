@@ -9,10 +9,10 @@ import {
 } from "@/components/ui/item";
 
 const popularTools = [
-  { name: "Gerador de CPF", href: "/gerador-de-cpf" },
-  { name: "Gerador de CPNJ", href: "/gerador-de-cnpj" },
-  { name: "Validador de CPF", href: "/validador-de-cpf" },
-  { name: "Validador de CPNJ", href: "/validador-de-cnpj" },
+  { name: "Gerador de CPF", href: "/gerador/cpf" },
+  { name: "Gerador de CPNJ", href: "/gerador/cnpj" },
+  { name: "Validador de CPF", href: "/validador/cpf" },
+  { name: "Validador de CPNJ", href: "/validador/cnpj" },
 ];
 
 export default function Home() {
