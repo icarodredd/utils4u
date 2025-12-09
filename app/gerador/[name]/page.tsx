@@ -34,7 +34,7 @@ export default function GenerateData() {
   };
 
   return (
-    <main className="mt-4 flex items-center flex-col gap-4">
+    <main className="mt-4 flex items-center flex-col gap-4 h-screen">
       <h2 className="scroll-m-20 pb-4 text-3xl font-extrabold tracking-tight first:mt-0 text-center">
         Gerador de {params?.name.toUpperCase()}
       </h2>
