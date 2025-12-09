@@ -9,6 +9,11 @@ import { useState } from "react";
 import { formatCPF, formatCNPJ } from "@brazilian-utils/brazilian-utils";
 import { Copy } from "lucide-react";
 
+const formatters: Record<string, (value: string) => string> = {
+  cpf: formatCPF,
+  cnpj: formatCNPJ,
+};
+
 export default function GenerateData() {
   const params = useParams<{ name: string }>();
   const [generatedData, setGeneratedData] = useState("");
@@ -17,20 +22,13 @@ export default function GenerateData() {
   const handleGenerate = async () => {
     const res = await fetch(`/api/generate${params?.name.toUpperCase()}`);
     const data = await res.json();
+    const rawData: string = data[params?.name as string];
 
-    if (pontuaction === "with" && params?.name === "cpf") {
-      const formattedCPF = formatCPF(data[params?.name as string]);
-      setGeneratedData(formattedCPF);
-      return;
-    }
+    if (pontuaction === "without") return setGeneratedData(rawData);
 
-    if (pontuaction === "with" && params?.name === "cnpj") {
-      const formattedCNPJ = formatCNPJ(data[params?.name as string]);
-      setGeneratedData(formattedCNPJ);
-      return;
-    }
+    const formattedData = formatters[params?.name as string](rawData);
 
-    setGeneratedData(data[params?.name as string]);
+    setGeneratedData(formattedData);
   };
 
   return (
